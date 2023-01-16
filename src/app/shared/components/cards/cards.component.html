@@ -1,0 +1,18 @@
+<mat-card class="news-card">
+  <mat-card-header>
+    <mat-card-title>
+      <a class="linkTitle" [routerLink]="['/new', extractId(item.uri)]">{{
+        item.title
+      }}</a>
+    </mat-card-title>
+    <mat-card-subtitle>{{ item.byline }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ item.abstract }}</p>
+    <p></p>
+    <span style="float: right; font-size: 0.8em"
+      ><b>Created:</b>{{ item.created_date }}</span
+    >
+    <p>&nbsp;</p>
+  </mat-card-content>
+</mat-card>

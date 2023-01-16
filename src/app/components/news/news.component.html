@@ -1,0 +1,83 @@
+<div class="flex-container center">
+  <h1>New York Times List of top News</h1>
+  <h4>(Notícies de la portada)</h4>
+</div>
+
+<div class="flex-container right">
+  <mat-button-toggle-group
+    name="favoriteColor"
+    aria-label="Favorite Color"
+    id="grupButtons"
+  >
+    <mat-button-toggle value="red" (click)="showCards()"
+      ><mat-icon>grid_on</mat-icon></mat-button-toggle
+    >
+    <mat-button-toggle value="green" (click)="showTable()"
+      ><mat-icon>list</mat-icon></mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</div>
+<div *ngIf="switchView" class="flex-container" id="containerCards">
+  <div [@fadeInOut] *ngFor="let noticia of noticies.results">
+    <app-cards [item]="noticia" [switchView]="switchView"></app-cards>
+    <!--  <mat-card class="news-card" *ngFor="let new of noticies.results">
+      <mat-card-header>
+        <mat-card-title>
+          <a class="linkTitle" [routerLink]="['/new', extractId(new.uri)]">{{
+            new.title
+          }}</a>
+        </mat-card-title>
+        <mat-card-subtitle>{{ new.byline }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ new.abstract }}</p>
+        <p></p>
+        <span style="float: right; font-size: 0.8em"
+          ><b>Created:</b>{{ new.created_date }}</span
+        >
+      </mat-card-content>
+    </mat-card>-->
+  </div>
+</div>
+
+<div class="flex-container" id="containerTaula" *ngIf="!switchView">
+  <table mat-table [dataSource]="noticies.results" class="mat-elevation-z8">
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <!-- ByLine Column -->
+    <ng-container matColumnDef="byline">
+      <th mat-header-cell *matHeaderCellDef>Author</th>
+      <td mat-cell *matCellDef="let element">{{ element.byline }}</td>
+    </ng-container>
+
+    <!-- CreatedAt Column -->
+    <ng-container matColumnDef="created_date">
+      <th mat-header-cell *matHeaderCellDef>Created at</th>
+      <td mat-cell *matCellDef="let element">{{ element.created_date }}</td>
+    </ng-container>
+
+    <!-- Go To Detail Column -->
+    <ng-container matColumnDef="go_detail">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon>add</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          matTooltip="Basic"
+          [routerLink]="['/new', extractId(element.uri)]"
+        >
+          <mat-icon>link</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <p></p>
+</div>

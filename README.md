@@ -1,3 +1,7 @@
+# IMPORTANT!
+
+Llegiu el fitxer [README_OSCAR_REMARQUES.md](/README_OSCAR_REMARQUES.md) per tal de veure els apunts i notes relatives a aquest PEC5
+
 # NewsPwa
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.

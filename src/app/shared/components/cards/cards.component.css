@@ -1,0 +1,21 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.news-card {
+  width: 300px;
+  margin: 0.5em 0.5em 0.5em 0.5em;
+  box-shadow: none;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.news-card:hover {
+  box-shadow: -1px 0px 21px -1px rgba(0, 0, 0, 0.46);
+}
